@@ -1,10 +1,13 @@
+import { Button } from "./Button";
+
 function Hero() {
   return (
     <section className="relative h-screen flex items-center justify-center bg-gradient-to-r from-amber-900/90 to-amber-800/90">
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: "url('/placeholder.svg?height=1080&width=1920')",
+          backgroundImage:
+            "url('/public/assets/images/mustafa-fatemi-ociRWDCmDRU-unsplash.jpg?height=1080&width=1920')",
         }}
       />
       <div className="absolute inset-0 bg-black/40" />
