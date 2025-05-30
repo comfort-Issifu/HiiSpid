@@ -1,5 +1,6 @@
 import About from "./components/About";
 import Footer from "./components/footer";
+import { Textarea } from "./components/Textarea";
 
 function App() {
   return (
