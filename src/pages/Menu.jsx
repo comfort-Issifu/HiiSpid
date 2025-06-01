@@ -5,7 +5,7 @@ import { menuItems, menuCategories } from "../data";
 import { useSearchParams } from "react-router-dom";
 import { useCart } from "../contexts/CartContext";
 import { Button } from "../components/Button";
-import Footer from "../components/Footer"
+import Footer from "../components/Footer";
 import Navigation from "../components/Header";
 
 function Menu() {
@@ -74,7 +74,7 @@ function Menu() {
 
   return (
     <>
-    <Navigation />
+      <Navigation />
       <div className="min-h-screen bg-gray-50">
         {/* Header */}
         <div className="bg-white shadow-sm">
@@ -131,7 +131,7 @@ function Menu() {
                     }`}
                   >
                     <div className="flex">
-                      <div className="w-32 flex-shrink-0">
+                      <div className="w-32  flex-shrink-0">
                         <img
                           src={item.image || "/placeholder.svg"}
                           alt={item.name}
@@ -149,25 +149,9 @@ function Menu() {
                         <p className="text-gray-600 text-sm mb-3">
                           {item.description}
                         </p>
-                        <div className="flex flex-wrap gap-1 mb-3">
-                          {item.dietary.map((diet) => (
-                            <Badge
-                              key={diet}
-                              variant="secondary"
-                              className="text-xs"
-                            >
-                              {diet}
-                            </Badge>
-                          ))}
-                          {item.spicy && (
-                            <Badge variant="destructive" className="text-xs">
-                              Spicy 🌶️
-                            </Badge>
-                          )}
-                        </div>
                         <div className="flex justify-between items-center">
                           <span className="text-xl font-bold text-amber-600">
-                            ${item.price}
+                            GH¢ {item.price}
                           </span>
                           <div className="flex items-center gap-2">
                             {getCartItemQuantity(item.id) > 0 && (
@@ -177,7 +161,7 @@ function Menu() {
                                   variant="outline"
                                   onClick={() => removeFromCart(item.id)}
                                 >
-                                  <Minus className="h-4 w-4" />
+                                  <Minus className="h-4 w-4" bg-white />
                                 </Button>
                                 <span className="w-8 text-center">
                                   {getCartItemQuantity(item.id)}
@@ -227,7 +211,7 @@ function Menu() {
                               {item.name}
                             </div>
                             <div className="text-gray-500 text-xs">
-                              ${item.price} each
+                              GH¢ {item.price} each
                             </div>
                           </div>
                           <div className="flex items-center gap-2">
@@ -261,7 +245,7 @@ function Menu() {
                       <div className="flex justify-between items-center mb-4">
                         <span className="font-semibold">Total:</span>
                         <span className="font-bold text-lg text-amber-600">
-                          ${getTotalPrice().toFixed(2)}
+                          GH¢ {getTotalPrice().toFixed(2)}
                         </span>
                       </div>
                       <Button className="w-full bg-amber-600 hover:bg-amber-700">

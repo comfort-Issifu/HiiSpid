@@ -70,7 +70,9 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <NavLink to="/" className="flex items-center">
-            <div className="text-2xl font-bold text-amber-600">HiiSpid</div>
+            <div className="text-2xl font-bold text-amber-600">
+              HiiSpid Lounge{" "}
+            </div>
           </NavLink>
 
           {/* Desktop Navigation */}

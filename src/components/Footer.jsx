@@ -1,27 +1,19 @@
-import {
-  MapPin,
-  Phone,
-  Mail,
-} from "lucide-react";
-
-
+import { MapPin, Phone, Mail } from "lucide-react";
 
 function Footer() {
-
-    return (
+  return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
             <h3 className="text-2xl font-bold text-amber-400 mb-4">
-              HiiSpid
+              HiiSpid Lounge
             </h3>
             <p className="text-gray-300 mb-4">
               Experience culinary excellence in the heart of the city. Serving
               exceptional cuisine since 1985.
             </p>
-          
           </div>
 
           {/* Quick Links */}
@@ -30,35 +22,35 @@ function Footer() {
             <ul className="space-y-2">
               <li>
                 <a
-                    href="/menu"
-                    className="text-gray-300 hover:text-amber-400 transition-colors"
-                  >
-                    Menu
-                  </a>
+                  href="/menu"
+                  className="text-gray-300 hover:text-amber-400 transition-colors"
+                >
+                  Menu
+                </a>
               </li>
               <li>
                 <a
-                    href="/order"
-                    className="text-gray-300 hover:text-amber-400 transition-colors"
-                  >
-                    Order Online
-                  </a>
+                  href="/order"
+                  className="text-gray-300 hover:text-amber-400 transition-colors"
+                >
+                  Order Online
+                </a>
               </li>
               <li>
                 <a
-                    href="/locations"
-                    className="text-gray-300 hover:text-amber-400 transition-colors"
-                  >
-                    Locations
-                  </a>
+                  href="/locations"
+                  className="text-gray-300 hover:text-amber-400 transition-colors"
+                >
+                  Locations
+                </a>
               </li>
               <li>
                 <a
-                    href="/feedback"
-                    className="text-gray-300 hover:text-amber-400 transition-colors"
-                  >
-                    Reviews
-                  </a>
+                  href="/feedback"
+                  className="text-gray-300 hover:text-amber-400 transition-colors"
+                >
+                  Reviews
+                </a>
               </li>
               <li>
                 <a
@@ -120,27 +112,27 @@ function Footer() {
         <div className="border-t border-gray-800 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-gray-400 text-sm mb-4 md:mb-0">
-              © 2024 HiiSpid Restaurant. All rights reserved.
+              © 2024 HiiSpid Lounge Restaurant. All rights reserved.
             </div>
             <div className="flex space-x-6 text-sm">
               <a
-                  href="/privacy"
-                  className="text-gray-400 hover:text-amber-400 transition-colors"
-                >
-                  Privacy Policy
-                </a>
-                <a
-                  href="/terms"
-                  className="text-gray-400 hover:text-amber-400 transition-colors"
-                >
-                  Terms of Service
-                </a>
-                <a
-                  href="/accessibility"
-                  className="text-gray-400 hover:text-amber-400 transition-colors"
-                >
-                  Accessibility
-                </a>
+                href="/privacy"
+                className="text-gray-400 hover:text-amber-400 transition-colors"
+              >
+                Privacy Policy
+              </a>
+              <a
+                href="/terms"
+                className="text-gray-400 hover:text-amber-400 transition-colors"
+              >
+                Terms of Service
+              </a>
+              <a
+                href="/accessibility"
+                className="text-gray-400 hover:text-amber-400 transition-colors"
+              >
+                Accessibility
+              </a>
             </div>
           </div>
         </div>

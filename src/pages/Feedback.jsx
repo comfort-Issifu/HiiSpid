@@ -182,6 +182,7 @@ function Feedback() {
                     <div>
                       <Label htmlFor="name">Name *</Label>
                       <Input
+                        className="border-zinc-200"
                         id="name"
                         value={formData.name}
                         onChange={(e) =>
@@ -194,6 +195,7 @@ function Feedback() {
                     <div>
                       <Label htmlFor="email">Email *</Label>
                       <Input
+                        className="border-zinc-200"
                         id="email"
                         type="email"
                         value={formData.email}
@@ -230,6 +232,7 @@ function Feedback() {
                     <div>
                       <Label htmlFor="visitDate">Visit Date</Label>
                       <Input
+                        className="border-zinc-200"
                         id="visitDate"
                         type="date"
                         value={formData.visitDate}

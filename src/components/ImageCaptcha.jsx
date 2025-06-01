@@ -1,5 +1,3 @@
-
-
 import { useState, useEffect, useCallback } from "react";
 import { RefreshCw } from "lucide-react";
 import { Button } from "./Button";
@@ -55,7 +53,7 @@ export default function ImageCaptcha({ onVerify, isRequired = true }) {
   // Generate new CAPTCHA on component mount
   useEffect(() => {
     refreshCaptcha();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps

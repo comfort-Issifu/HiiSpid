@@ -10,7 +10,7 @@ import { Label } from "../components/Label";
 import { Textarea } from "../components/Textarea";
 import { RadioGroup, RadioGroupItem } from "../components/RadioButton";
 import { Checkbox } from "../components/Checkbox";
-import ImageCaptcha from "../components/ImageCaptcha"
+import ImageCaptcha from "../components/ImageCaptcha";
 
 function Order() {
   const [orderType, setOrderType] = useState("delivery");
@@ -93,7 +93,7 @@ function Order() {
                       >
                         <div className="font-medium">Delivery</div>
                         <div className="text-sm text-gray-500">
-                          45-60 minutes • $3.99 delivery fee
+                          45-60 minutes • GH¢ 3.99 delivery fee
                         </div>
                       </Label>
                     </div>
@@ -130,6 +130,7 @@ function Order() {
                         handleInputChange("firstName", e.target.value)
                       }
                       required
+                      className="border-zinc-200"
                     />
                   </div>
                   <div>
@@ -141,6 +142,7 @@ function Order() {
                         handleInputChange("lastName", e.target.value)
                       }
                       required
+                      className="border-zinc-200"
                     />
                   </div>
                 </div>
@@ -155,6 +157,7 @@ function Order() {
                         handleInputChange("email", e.target.value)
                       }
                       required
+                      className="border-zinc-200"
                     />
                   </div>
                   <div>
@@ -167,6 +170,7 @@ function Order() {
                         handleInputChange("phone", e.target.value)
                       }
                       required
+                      className="border-zinc-200"
                     />
                   </div>
                 </div>
@@ -192,6 +196,7 @@ function Order() {
                         handleInputChange("address", e.target.value)
                       }
                       required={orderType === "delivery"}
+                      className="border-zinc-200"
                     />
                   </div>
                   <div className="grid md:grid-cols-2 gap-4">
@@ -204,6 +209,7 @@ function Order() {
                           handleInputChange("city", e.target.value)
                         }
                         required={orderType === "delivery"}
+                        className="border-zinc-200"
                       />
                     </div>
                     <div>
@@ -214,6 +220,7 @@ function Order() {
                         onChange={(e) =>
                           handleInputChange("zipCode", e.target.value)
                         }
+                        className="border-zinc-200"
                         required={orderType === "delivery"}
                       />
                     </div>
@@ -229,6 +236,7 @@ function Order() {
               </CardHeader>
               <CardContent>
                 <Textarea
+                  className="border-zinc-200"
                   placeholder="Any special requests or dietary restrictions..."
                   value={formData.specialInstructions}
                   onChange={(e) =>
@@ -276,6 +284,7 @@ function Order() {
                           handleInputChange("cardNumber", e.target.value)
                         }
                         required={paymentMethod === "card"}
+                        className="border-zinc-200"
                       />
                     </div>
                     <div className="grid grid-cols-3 gap-4">
@@ -289,6 +298,7 @@ function Order() {
                             handleInputChange("expiryDate", e.target.value)
                           }
                           required={paymentMethod === "card"}
+                          className="border-zinc-200"
                         />
                       </div>
                       <div>
@@ -301,6 +311,7 @@ function Order() {
                             handleInputChange("cvv", e.target.value)
                           }
                           required={paymentMethod === "card"}
+                          className="border-zinc-200"
                         />
                       </div>
                     </div>
@@ -313,6 +324,7 @@ function Order() {
                           handleInputChange("nameOnCard", e.target.value)
                         }
                         required={paymentMethod === "card"}
+                        className="border-zinc-200"
                       />
                     </div>
                   </div>
@@ -342,23 +354,23 @@ function Order() {
                 <div className="space-y-2">
                   <div className="flex justify-between">
                     <span>Subtotal</span>
-                    <span>$45.97</span>
+                    <span>GH¢ 45.97</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Tax</span>
-                    <span>$3.68</span>
+                    <span>GH¢ 3.68</span>
                   </div>
                   {orderType === "delivery" && (
                     <div className="flex justify-between">
                       <span>Delivery Fee</span>
-                      <span>$3.99</span>
+                      <span>GH¢ 3.99</span>
                     </div>
                   )}
                   <div className="border-zinc-200 border-t pt-2">
                     <div className="flex justify-between font-bold text-lg">
                       <span>Total</span>
                       <span className="text-amber-600">
-                        ${orderType === "delivery" ? "53.64" : "49.65"}
+                        GH¢ {orderType === "delivery" ? "53.64" : "49.65"}
                       </span>
                     </div>
                   </div>
@@ -392,9 +404,8 @@ function Order() {
                     disabled={!isCaptchaVerified}
                   >
                     {isCaptchaVerified
-                      ? `Place Order - $${
-                          orderType === "delivery" ? "53.64" : "49.65"
-                        }`
+                      ? `Place Order - 
+                      GH¢ ${orderType === "delivery" ? "53.64" : "49.65"}`
                       : "Complete Security Verification to Continue"}
                   </Button>
                   {!isCaptchaVerified && (

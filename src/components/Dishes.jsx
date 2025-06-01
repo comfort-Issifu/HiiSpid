@@ -37,7 +37,7 @@ export const Dishes = () => {
                 <p className="text-gray-600 mb-4">{dish.description}</p>
                 <div className="flex justify-between items-center">
                   <span className="text-2xl font-bold text-amber-600">
-                    ${dish.price}
+                    GH¢ {dish.price}
                   </span>
                   <Button size="sm" className="bg-amber-600 hover:bg-amber-700">
                     Add to Cart

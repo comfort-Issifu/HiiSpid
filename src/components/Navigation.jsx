@@ -38,4 +38,4 @@ function Navigation({ isMobile, onItemClick }) {
   );
 }
 
-export default Navigation
+export default Navigation;
