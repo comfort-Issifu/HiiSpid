@@ -25,7 +25,7 @@ const testimonials = [
 ];
 
 function Testimonials() {
-    const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
   return (
     <section className="py-20 bg-white">
       <div className="max-w-4xl mx-auto px-4">

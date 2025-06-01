@@ -6,10 +6,10 @@ function About() {
           <div>
             <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Story</h2>
             <p className="text-lg text-gray-600 mb-6">
-              Founded in 1985, HiiSpid has been serving exceptional cuisine for
-              over three decades. Our passion for fresh, locally-sourced
-              ingredients and innovative cooking techniques has made us a
-              beloved destination for food enthusiasts.
+              Founded in 1985, HiiSpid Lounge has been serving exceptional
+              cuisine for over three decades. Our passion for fresh,
+              locally-sourced ingredients and innovative cooking techniques has
+              made us a beloved destination for food enthusiasts.
             </p>
             <p className="text-lg text-gray-600 mb-8">
               Led by Chef Marco Antonelli, our team creates memorable dining
