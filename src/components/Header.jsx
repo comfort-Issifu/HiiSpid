@@ -19,7 +19,6 @@ const menuItems = [
   // ... (same menuItems list you provided)
 ];
 
-<Navigation />;
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -27,9 +26,9 @@ export default function Header() {
   const [cartOpen, setCartOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-
   const { cart, addToCart, removeFromCart, getTotalItems, getTotalPrice } =
     useCart();
+    
   const location = useLocation();
   const navigate = useNavigate();
   const pathname = location.pathname;

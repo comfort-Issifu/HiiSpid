@@ -11,6 +11,7 @@ import { Textarea } from "../components/Textarea";
 import { RadioGroup, RadioGroupItem } from "../components/RadioButton";
 import { Checkbox } from "../components/Checkbox";
 import ImageCaptcha from "../components/ImageCaptcha";
+import toast from "react-hot-toast";
 
 function Order() {
   const [orderType, setOrderType] = useState("delivery");
@@ -47,14 +48,16 @@ function Order() {
 
     // Check if CAPTCHA is verified
     if (!isCaptchaVerified) {
-      alert(
+      toast.error(
         "Please complete the security verification before submitting your order."
       );
       return;
     }
 
     // Handle order submission
-    alert("Order submitted successfully! Thank you for choosing Bella Vista.");
+    toast.success(
+      "Order submitted successfully! Thank you for choosing Bella Vista."
+    );
   };
   return (
     <>

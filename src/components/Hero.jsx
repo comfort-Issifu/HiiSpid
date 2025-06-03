@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { Button } from "./Button";
 
 function Hero() {
@@ -22,7 +23,7 @@ function Hero() {
             size="lg"
             className="bg-amber-600 hover:bg-amber-700 text-white"
           >
-            <a href="/menu">View Menu</a>
+            <NavLink href="/menu">View Menu</NavLink>
           </Button>
           <Button
             asChild
@@ -30,7 +31,7 @@ function Hero() {
             variant="outline"
             className="border-white text-white hover:bg-white hover:text-amber-900"
           >
-            <a href="/order">Order Online</a>
+            <NavLink href="/order">Order Online</NavLink>
           </Button>
         </div>
       </div>

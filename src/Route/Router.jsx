@@ -4,6 +4,7 @@ import Menu from "../pages/Menu";
 import Location from "../pages/Location";
 import Feedback from "../pages/Feedback";
 import Order from "../pages/Order";
+import PageNotFound from "../pages/PageNotFound";
 
 function Router() {
   return (
@@ -14,6 +15,7 @@ function Router() {
         <Route path="order" element={<Order />} />
         <Route path="locations" element={<Location />} />
         <Route path="feedback" element={<Feedback />} />
+        <Route path="*" element={<PageNotFound/>} />
       </Routes>
     </BrowserRouter>
   );

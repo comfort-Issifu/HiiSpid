@@ -9,77 +9,25 @@ import { RadioGroup, RadioGroupItem } from "../components/RadioButton";
 import { Badge } from "../components/Badge";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-
-const existingReviews = [
-  {
-    id: 1,
-    name: "Sarah Johnson",
-    rating: 5,
-    date: "2 days ago",
-    location: "Downtown",
-    comment:
-      "Absolutely amazing experience! The food was exceptional and the service was top-notch. The ambiance is perfect for a romantic dinner. Highly recommend the beef wellington!",
-    helpful: 12,
-    verified: true,
-  },
-  {
-    id: 2,
-    name: "Michael Chen",
-    rating: 5,
-    date: "1 week ago",
-    location: "Uptown",
-    comment:
-      "Best restaurant in the city! The chef's special was incredible and the wine pairing was perfect. The staff was knowledgeable and attentive without being intrusive.",
-    helpful: 8,
-    verified: true,
-  },
-  {
-    id: 3,
-    name: "Emily Davis",
-    rating: 4,
-    date: "2 weeks ago",
-    location: "Waterfront",
-    comment:
-      "Great food and beautiful ocean views. The seafood was fresh and delicious. Only minor complaint is that it was a bit noisy during peak hours, but overall a wonderful experience.",
-    helpful: 15,
-    verified: false,
-  },
-  {
-    id: 4,
-    name: "David Rodriguez",
-    rating: 5,
-    date: "3 weeks ago",
-    location: "Downtown",
-    comment:
-      "Celebrated our anniversary here and it was perfect! The staff went above and beyond to make it special. The tiramisu is to die for!",
-    helpful: 6,
-    verified: true,
-  },
-  {
-    id: 5,
-    name: "Lisa Thompson",
-    rating: 4,
-    date: "1 month ago",
-    location: "Uptown",
-    comment:
-      "Lovely atmosphere and excellent service. The truffle pasta was amazing. Will definitely be back to try more dishes from the menu.",
-    helpful: 9,
-    verified: true,
-  },
-];
+import { FeedbackProvider, useFeedback } from "../contexts/FeedbackContext";
+import Spinner from "../components/Spinner";
+import { timeAgo } from "../utils";
+import toast from "react-hot-toast";
 
 function Feedback() {
+  const { feedbacks, createFeedback, isLoading, isButtonloading } =
+    useFeedback();
   const [rating, setRating] = useState(0);
   const [hoveredRating, setHoveredRating] = useState(0);
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    location: "",
+    name: "blog",
+    email: "lizzfile90@gmail.com",
+    location: "Downtown",
     visitDate: "",
-    comment: "",
-    recommend: "",
+    comment: "wow",
+    rating,
+    date: `${new Date().toISOString()}`,
   });
-  const [helpfulVotes, setHelpfulVotes] = useState({});
 
   const handleInputChange = (field, value) => {
     setFormData((prev) => ({
@@ -88,13 +36,20 @@ function Feedback() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (rating === 0) {
-      alert("Please select a rating");
+      toast.error("Please select a rating");
       return;
     }
-    alert("Thank you for your feedback!");
+
+    const finalFormData = {
+      ...formData,
+      rating,
+    };
+
+    await createFeedback(finalFormData);
+
     setRating(0);
     setFormData({
       name: "",
@@ -102,27 +57,19 @@ function Feedback() {
       location: "",
       visitDate: "",
       comment: "",
-      recommend: "",
     });
   };
 
-  const toggleHelpful = (reviewId) => {
-    setHelpfulVotes((prev) => ({
-      ...prev,
-      [reviewId]: !prev[reviewId],
-    }));
-  };
-
   const averageRating =
-    existingReviews.reduce((sum, review) => sum + review.rating, 0) /
-    existingReviews.length;
+    feedbacks.reduce((sum, review) => sum + review.rating, 0) /
+    feedbacks.length;
 
   const ratingDistribution = [5, 4, 3, 2, 1].map((star) => ({
     rating: star,
-    count: existingReviews.filter((review) => review.rating === star).length,
+    count: feedbacks.filter((review) => review.rating === star).length,
     percentage:
-      (existingReviews.filter((review) => review.rating === star).length /
-        existingReviews.length) *
+      (feedbacks.filter((review) => review.rating === star).length /
+        feedbacks.length) *
       100,
   }));
 
@@ -256,7 +203,7 @@ function Feedback() {
                       />
                     </div>
 
-                    <div>
+                    {/* <div>
                       <Label>Would you recommend us to others?</Label>
                       <RadioGroup
                         value={formData.recommend}
@@ -277,13 +224,17 @@ function Feedback() {
                           <Label htmlFor="no">No</Label>
                         </div>
                       </RadioGroup>
-                    </div>
+                    </div> */}
 
                     <Button
                       type="submit"
-                      className="w-full bg-amber-600 hover:bg-amber-700"
+                      className="w-full bg-amber-600 hover:bg-amber-700 text-white"
                     >
-                      <Send className="h-4 w-4 mr-2" />
+                      {isButtonloading ? (
+                        <Spinner size="small" color="white" />
+                      ) : (
+                        <Send className="h-4 w-4 mr-2 bg" />
+                      )}
                       Submit Review
                     </Button>
                   </form>
@@ -291,115 +242,126 @@ function Feedback() {
               </Card>
             </div>
 
-            <div className="lg:col-span-2 space-y-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Customer Reviews</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="text-center">
-                      <div className="text-4xl font-bold text-amber-600 mb-2">
-                        {averageRating.toFixed(1)}
-                      </div>
-                      <div className="flex justify-center mb-2">
-                        {[1, 2, 3, 4, 5].map((star) => (
-                          <Star
-                            key={star}
-                            className={`h-5 w-5 ${
-                              star <= Math.round(averageRating)
-                                ? "fill-yellow-400 text-yellow-400"
-                                : "text-gray-300"
-                            }`}
-                          />
-                        ))}
-                      </div>
-                      <div className="text-gray-600">
-                        Based on {existingReviews.length} reviews
-                      </div>
-                    </div>
-                    <div className="space-y-2">
-                      {ratingDistribution.map(
-                        ({ rating, count, percentage }) => (
-                          <div key={rating} className="flex items-center gap-2">
-                            <span className="text-sm w-8">{rating}★</span>
-                            <div className="flex-1 bg-gray-200 rounded-full h-2">
-                              <div
-                                className="bg-amber-600 h-2 rounded-full"
-                                style={{ width: `${percentage}%` }}
-                              />
-                            </div>
-                            <span className="text-sm w-8 text-gray-600">
-                              {count}
-                            </span>
-                          </div>
-                        )
-                      )}
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <div className="space-y-4">
-                {existingReviews.map((review) => (
-                  <Card key={review.id}>
-                    <CardContent className="pt-6">
-                      <div className="flex justify-between items-start mb-3">
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center">
-                            <User className="h-5 w-5 text-amber-600" />
-                          </div>
-                          <div>
-                            <div className="flex items-center gap-2">
-                              <span className="font-semibold">
-                                {review.name}
-                              </span>
-                              {review.verified && (
-                                <Badge variant="secondary" className="text-xs">
-                                  Verified
-                                </Badge>
-                              )}
-                            </div>
-                            <div className="text-sm text-gray-500">
-                              {review.location} • {review.date}
-                            </div>
-                          </div>
+            {isLoading ? (
+              <Spinner />
+            ) : (
+              <div className="lg:col-span-2 space-y-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Customer Reviews</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div className="text-center">
+                        <div className="text-4xl font-bold text-amber-600 mb-2">
+                          {averageRating.toFixed(1)}
                         </div>
-                        <div className="flex">
+                        <div className="flex justify-center mb-2">
                           {[1, 2, 3, 4, 5].map((star) => (
                             <Star
                               key={star}
-                              className={`h-4 w-4 ${
-                                star <= review.rating
+                              className={`h-5 w-5 ${
+                                star <= Math.round(averageRating)
                                   ? "fill-yellow-400 text-yellow-400"
                                   : "text-gray-300"
                               }`}
                             />
                           ))}
                         </div>
+                        <div className="text-gray-600">
+                          Based on {feedbacks.length} reviews
+                        </div>
                       </div>
-                      <p className="text-gray-700 mb-4">{review.comment}</p>
-                      <div className="flex items-center justify-between">
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => toggleHelpful(review.id)}
-                          className={
-                            helpfulVotes[review.id]
-                              ? "text-amber-600"
-                              : "text-gray-500"
-                          }
-                        >
-                          <ThumbsUp className="h-4 w-4 mr-1" />
-                          Helpful (
-                          {review.helpful + (helpfulVotes[review.id] ? 1 : 0)})
-                        </Button>
+                      <div className="space-y-2">
+                        {ratingDistribution.map(
+                          ({ rating, count, percentage }) => (
+                            <div
+                              key={rating}
+                              className="flex items-center gap-2"
+                            >
+                              <span className="text-sm w-8">{rating}★</span>
+                              <div className="flex-1 bg-gray-200 rounded-full h-2">
+                                <div
+                                  className="bg-amber-600 h-2 rounded-full"
+                                  style={{ width: `${percentage}%` }}
+                                />
+                              </div>
+                              <span className="text-sm w-8 text-gray-600">
+                                {count}
+                              </span>
+                            </div>
+                          )
+                        )}
                       </div>
-                    </CardContent>
-                  </Card>
-                ))}
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <div className="space-y-4">
+                  {feedbacks.map((review) => (
+                    <Card key={review.id}>
+                      <CardContent className="pt-6">
+                        <div className="flex justify-between items-start mb-3">
+                          <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center">
+                              <User className="h-5 w-5 text-amber-600" />
+                            </div>
+                            <div>
+                              <div className="flex items-center gap-2">
+                                <span className="font-semibold">
+                                  {review.name}
+                                </span>
+                                {review.verified && (
+                                  <Badge
+                                    variant="secondary"
+                                    className="text-xs"
+                                  >
+                                    Verified
+                                  </Badge>
+                                )}
+                              </div>
+                              <div className="text-sm text-gray-500">
+                                {review.location} • {timeAgo(review.date)}
+                              </div>
+                            </div>
+                          </div>
+                          <div className="flex">
+                            {[1, 2, 3, 4, 5].map((star) => (
+                              <Star
+                                key={star}
+                                className={`h-4 w-4 ${
+                                  star <= review.rating
+                                    ? "fill-yellow-400 text-yellow-400"
+                                    : "text-gray-300"
+                                }`}
+                              />
+                            ))}
+                          </div>
+                        </div>
+                        <p className="text-gray-700 mb-4">{review.comment}</p>
+                        {/* <div className="flex items-center justify-between">
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => toggleHelpful(review.id)}
+                            className={
+                              helpfulVotes[review.id]
+                                ? "text-amber-600"
+                                : "text-gray-500"
+                            }
+                          >
+                            <ThumbsUp className="h-4 w-4 mr-1" />
+                            Helpful (
+                            {review.helpful + (helpfulVotes[review.id] ? 1 : 0)}
+                            )
+                          </Button>
+                        </div> */}
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

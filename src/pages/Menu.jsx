@@ -1,19 +1,24 @@
 import { Star, Badge, Minus, Plus } from "lucide-react";
 import { Card, CardContent } from "../components/Card";
 import { useState, useEffect } from "react";
-import { menuItems, menuCategories } from "../data";
 import { useSearchParams } from "react-router-dom";
-import { useCart } from "../contexts/CartContext";
+import { useCart, useMenus } from "../contexts/CartContext";
 import { Button } from "../components/Button";
 import Footer from "../components/Footer";
 import Navigation from "../components/Header";
 
 function Menu() {
+  const { menus } = useMenus();
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [highlightedItem, setHighlightedItem] = useState(null);
   const [searchParams] = useSearchParams();
   const { cart, addToCart, removeFromCart, getTotalItems, getTotalPrice } =
     useCart();
+  const menuItems = menus;
+  const menuCategories = [
+    "All",
+    ...new Set(menus.map((menu) => menu.category)),
+  ];
 
   // Handle search and highlight from URL params
   useEffect(() => {
@@ -108,7 +113,7 @@ function Menu() {
                       onClick={() => setSelectedCategory(category)}
                       className={
                         selectedCategory === category
-                          ? "bg-amber-600 hover:bg-amber-700"
+                          ? "bg-amber-600 hover:bg-amber-700 "
                           : ""
                       }
                     >
@@ -161,7 +166,7 @@ function Menu() {
                                   variant="outline"
                                   onClick={() => removeFromCart(item.id)}
                                 >
-                                  <Minus className="h-4 w-4" bg-white />
+                                  <Minus className="h-4 w-4 bg-white" />
                                 </Button>
                                 <span className="w-8 text-center">
                                   {getCartItemQuantity(item.id)}
