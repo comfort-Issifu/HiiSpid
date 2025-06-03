@@ -15,7 +15,7 @@ function Router() {
         <Route path="order" element={<Order />} />
         <Route path="locations" element={<Location />} />
         <Route path="feedback" element={<Feedback />} />
-        <Route path="*" element={<PageNotFound/>} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
   );

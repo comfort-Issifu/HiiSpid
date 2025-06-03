@@ -54,7 +54,7 @@ function Menu() {
         (item) =>
           item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
           item.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          item.category.toLowerCase().includes(searchQuery.toLowerCase())
+          item.category.toLowerCase().includes(searchQuery.toLowerCase()),
       );
     }
 
@@ -235,7 +235,7 @@ function Menu() {
                               size="sm"
                               onClick={() =>
                                 handleAddToCart(
-                                  menuItems.find((mi) => mi.id === item.id)
+                                  menuItems.find((mi) => mi.id === item.id),
                                 )
                               }
                               className="h-6 w-6 p-0 bg-amber-600 hover:bg-amber-700"

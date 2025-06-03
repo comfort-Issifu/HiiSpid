@@ -19,7 +19,6 @@ const menuItems = [
   // ... (same menuItems list you provided)
 ];
 
-
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -28,7 +27,7 @@ export default function Header() {
   const [searchResults, setSearchResults] = useState([]);
   const { cart, addToCart, removeFromCart, getTotalItems, getTotalPrice } =
     useCart();
-    
+
   const location = useLocation();
   const navigate = useNavigate();
   const pathname = location.pathname;
@@ -40,7 +39,7 @@ export default function Header() {
         (item) =>
           item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
           item.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          item.category.toLowerCase().includes(searchQuery.toLowerCase())
+          item.category.toLowerCase().includes(searchQuery.toLowerCase()),
       );
       setSearchResults(filtered);
     } else {

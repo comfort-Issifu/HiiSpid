@@ -245,7 +245,7 @@ function Location() {
                   <CardContent>
                     {(() => {
                       const location = locations.find(
-                        (l) => l.id === selectedLocation
+                        (l) => l.id === selectedLocation,
                       );
                       if (!location) return null;
 
@@ -273,7 +273,7 @@ function Location() {
                                     </span>
                                     <span>{hours}</span>
                                   </div>
-                                )
+                                ),
                               )}
                             </div>
                           </div>

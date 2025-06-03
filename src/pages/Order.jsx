@@ -49,14 +49,14 @@ function Order() {
     // Check if CAPTCHA is verified
     if (!isCaptchaVerified) {
       toast.error(
-        "Please complete the security verification before submitting your order."
+        "Please complete the security verification before submitting your order.",
       );
       return;
     }
 
     // Handle order submission
     toast.success(
-      "Order submitted successfully! Thank you for choosing Bella Vista."
+      "Order submitted successfully! Thank you for choosing Bella Vista.",
     );
   };
   return (

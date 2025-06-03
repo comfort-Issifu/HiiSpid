@@ -29,7 +29,7 @@ function CartProvider({ children }) {
         return prev.map((cartItem) =>
           cartItem.id === item.id
             ? { ...cartItem, quantity: cartItem.quantity + 1 }
-            : cartItem
+            : cartItem,
         );
       }
       return [...prev, { ...item, quantity: 1 }];
@@ -59,7 +59,7 @@ function CartProvider({ children }) {
         return prev.map((cartItem) =>
           cartItem.id === itemId
             ? { ...cartItem, quantity: cartItem.quantity - 1 }
-            : cartItem
+            : cartItem,
         );
       }
       return prev.filter((cartItem) => cartItem.id !== itemId);

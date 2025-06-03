@@ -5,7 +5,6 @@ export function cn(...inputs) {
   return twMerge(clsx(inputs));
 }
 
-
 export function timeAgo(dateString) {
   const now = new Date();
   const date = new Date(dateString);

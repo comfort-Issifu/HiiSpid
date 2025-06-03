@@ -5,7 +5,7 @@ const getFeedbacks = async () => {
 
   if (error) {
     throw new Error(
-      "Sorry! We couldn’t load the feedback right now. Please refresh the page or try again later."
+      "Sorry! We couldn’t load the feedback right now. Please refresh the page or try again later.",
     );
   }
 
@@ -21,11 +21,11 @@ const addFeedbacks = async (feedback) => {
   if (error) {
     if (error.code === "23505" || error.message.includes("duplicate key")) {
       throw new Error(
-        "A feedback with this email already exists. Please check or try again."
+        "A feedback with this email already exists. Please check or try again.",
       );
     } else {
       throw new Error(
-        "Oops! We couldn’t save your feedback right now. Please try again in a moment."
+        "Oops! We couldn’t save your feedback right now. Please try again in a moment.",
       );
     }
   }

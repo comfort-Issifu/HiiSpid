@@ -25,13 +25,14 @@ const featuredDishes = [
   },
 ];
 
-const menuCategories = ["All", "Meal", "Beverages"]
+const menuCategories = ["All", "Meal", "Beverages"];
 
 const menuItems = [
   {
     id: 1,
     name: "Bruschetta Trio",
-    description: "Three varieties of our signature bruschetta with fresh tomatoes, basil, and mozzarella",
+    description:
+      "Three varieties of our signature bruschetta with fresh tomatoes, basil, and mozzarella",
     price: 14.99,
     category: "Meal",
     image: "/assets/images/beef-wellington.webp?height=200&width=300",
@@ -42,7 +43,8 @@ const menuItems = [
   {
     id: 2,
     name: "Caesar Salad",
-    description: "Crisp romaine lettuce, parmesan cheese, croutons, and our house-made Caesar dressing",
+    description:
+      "Crisp romaine lettuce, parmesan cheese, croutons, and our house-made Caesar dressing",
     price: 16.99,
     category: "Meal",
     image: "/assets/images/beef-wellington.webp?height=200&width=300",
@@ -53,7 +55,8 @@ const menuItems = [
   {
     id: 3,
     name: "Grilled Salmon",
-    description: "Fresh Atlantic salmon with herbs, lemon, and seasonal vegetables",
+    description:
+      "Fresh Atlantic salmon with herbs, lemon, and seasonal vegetables",
     price: 28.99,
     category: "Meal",
     image: "/assets/images/beef-wellington.webp?height=200&width=300",
@@ -64,7 +67,8 @@ const menuItems = [
   {
     id: 4,
     name: "Beef Wellington",
-    description: "Classic beef wellington with mushroom duxelles and red wine reduction",
+    description:
+      "Classic beef wellington with mushroom duxelles and red wine reduction",
     price: 45.99,
     category: "Meal",
     image: "/assets/images/beef-wellington.webp?height=200&width=300",
@@ -75,7 +79,8 @@ const menuItems = [
   {
     id: 5,
     name: "Truffle Pasta",
-    description: "Handmade fettuccine with black truffle, parmesan, and cream sauce",
+    description:
+      "Handmade fettuccine with black truffle, parmesan, and cream sauce",
     price: 32.99,
     category: "Meal",
     image: "/assets/images/beef-wellington.webp?height=200&width=300",
@@ -97,7 +102,8 @@ const menuItems = [
   {
     id: 7,
     name: "Tiramisu",
-    description: "Classic Italian dessert with coffee-soaked ladyfingers and mascarpone",
+    description:
+      "Classic Italian dessert with coffee-soaked ladyfingers and mascarpone",
     price: 9.99,
     category: "Meal",
     image: "/assets/images/beef-wellington.webp?height=200&width=300",
@@ -108,7 +114,8 @@ const menuItems = [
   {
     id: 8,
     name: "Chocolate Lava Cake",
-    description: "Warm chocolate cake with molten center, served with vanilla ice cream",
+    description:
+      "Warm chocolate cake with molten center, served with vanilla ice cream",
     price: 11.99,
     category: "Meal",
     image: "/assets/images/beef-wellington.webp?height=200&width=300",
@@ -149,9 +156,7 @@ const menuItems = [
     dietary: ["Vegan"],
     spicy: false,
   },
-]
-
-
+];
 
 const navigation = [
   { name: "Home", href: "/" },

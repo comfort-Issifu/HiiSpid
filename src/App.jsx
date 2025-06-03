@@ -2,7 +2,7 @@ import { Toaster } from "react-hot-toast";
 import Router from "./Route/Router";
 // import CookieBanner from "./components/CookieBanner";
 import { CartProvider } from "./contexts/CartContext";
-import { FeedbackProvider } from "./contexts/FeedbackContext";
+import { FeedbackProvider } from "./contexts/feedback/Feedback.context";
 
 function App() {
   return (

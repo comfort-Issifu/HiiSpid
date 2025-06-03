@@ -9,7 +9,7 @@ import { RadioGroup, RadioGroupItem } from "../components/RadioButton";
 import { Badge } from "../components/Badge";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import { FeedbackProvider, useFeedback } from "../contexts/FeedbackContext";
+import { useFeedback } from "../contexts/feedback/Feedback.context";
 import Spinner from "../components/Spinner";
 import { timeAgo } from "../utils";
 import toast from "react-hot-toast";
@@ -290,7 +290,7 @@ function Feedback() {
                                 {count}
                               </span>
                             </div>
-                          )
+                          ),
                         )}
                       </div>
                     </div>

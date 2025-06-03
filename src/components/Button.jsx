@@ -31,7 +31,7 @@ const buttonVariants = cva(
       variant: "default",
       size: "default",
     },
-  }
+  },
 );
 
 const Button = forwardRef(
@@ -44,7 +44,7 @@ const Button = forwardRef(
         {...props}
       />
     );
-  }
+  },
 );
 Button.displayName = "Button";
 
