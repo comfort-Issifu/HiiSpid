@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
-import { addFeedbacks, getFeedbacks } from "../../services/feedback";
+import { addFeedbacks, getFeedbacks } from "../../services/apiFeedback";
 import toast from "react-hot-toast";
 import actionTypes from "./feedback.types";
 import { reducer, initialState } from "./feedback.reducer";
@@ -9,7 +9,7 @@ const FeedbackContext = createContext(initialState);
 function FeedbackProvider({ children }) {
   const [{ feedbacks, isLoading, isButtonloading }, dispatch] = useReducer(
     reducer,
-    initialState,
+    initialState
   );
 
   useEffect(() => {
@@ -34,7 +34,7 @@ function FeedbackProvider({ children }) {
       if (newFeedback) {
         toast.success("Thank you for your feedback!");
       }
-      dispatch({ type: actionTypes.FEEDBACK_CREATED, payload: newFeedback });
+      dispatch({ type: actionTypes.FEEDBACK_CREATED, payload: newFeedback[0] });
     } catch (error) {
       toast.error(error.message);
       dispatch({ type: actionTypes.REJECTED, payload: error.message });

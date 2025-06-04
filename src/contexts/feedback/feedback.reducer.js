@@ -28,7 +28,7 @@ function reducer(state, action) {
         ...state,
         isLoading: false,
         isButtonloading: false,
-        feedbacks: [...state.feedbacks],
+        feedbacks: [...state.feedbacks, action.payload],
       };
 
     case actionTypes.REJECTED:

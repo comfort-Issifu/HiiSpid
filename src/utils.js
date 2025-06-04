@@ -27,3 +27,34 @@ export function timeAgo(dateString) {
     return `${diffMonths} month${diffMonths > 1 ? "s" : ""} ago`;
   return `${diffYears} year${diffYears > 1 ? "s" : ""} ago`;
 }
+
+export const getSortedReviews = (data, sortBy) => {
+  const sorted = [...data];
+
+  switch (sortBy) {
+    case "newest":
+      sorted.reverse();
+      break;
+    // Already sorted by oldest first
+    case "oldest":
+      break;
+    case "highest":
+      sorted.sort((a, b) => b.rating - a.rating);
+      break;
+    case "lowest":
+      sorted.sort((a, b) => a.rating - b.rating);
+      break;
+    // case "helpful":
+    //   sorted.sort(
+    //     (a, b) =>
+    //       b.helpful +
+    //       (helpfulVotes[b.id] ? 1 : 0) -
+    //       (a.helpful + (helpfulVotes[a.id] ? 1 : 0))
+    //   );
+    //   break;
+    default:
+      break;
+  }
+
+  return sorted;
+};
