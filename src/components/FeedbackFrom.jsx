@@ -18,13 +18,12 @@ function FeedbackFrom() {
     useFeedback();
   const [rating, setRating] = useState(0);
   const [formData, setFormData] = useState({
-    name: "blog",
-    email: "lizzfile90@gmail.com",
-    location: "Downtown",
+    name: "",
+    email: "",
+    location: "",
     visitDate: "",
-    comment: "wow",
+    comment: "",
     rating,
-    date: `${new Date().toISOString()}`,
   });
 
     const handleInputChange = (field, value) => {
