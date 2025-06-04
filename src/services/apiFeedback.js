@@ -19,7 +19,6 @@ const addFeedbacks = async (feedback) => {
     .select();
 
   if (error) {
-    console.log(error)
     if (error.code === "23505" || error.message.includes("duplicate key")) {
       throw new Error(
         "A feedback with this email already exists. Please check or try again.",
