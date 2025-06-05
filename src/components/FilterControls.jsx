@@ -15,15 +15,15 @@ function FilterControls({sortBy, setSortBy, setCurrentPage, reviewsPerPage, setR
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
             <span className="text-sm text-gray-600">Sort by:</span>
-            <Select value={sortBy} onValueChange={setSortBy}>
+            <Select value={sortBy} onValueChange={setSortBy} className="border-b-lime-600">
               <SelectTrigger className="w-32">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="newest">Newest</SelectItem>
-                <SelectItem value="oldest">Oldest</SelectItem>
-                <SelectItem value="highest">Highest Rated</SelectItem>
-                <SelectItem value="lowest">Lowest Rated</SelectItem>
+              <SelectContent className="bg-white border-[#E4E4E7]">
+                <SelectItem className="hover:bg-[#F4F4F5]" value="newest">Newest</SelectItem>
+                <SelectItem className="hover:bg-[#F4F4F5]" value="oldest">Oldest</SelectItem>
+                <SelectItem className="hover:bg-[#F4F4F5]" value="highest">Highest Rated</SelectItem>
+                <SelectItem className="hover:bg-[#F4F4F5]" value="lowest">Lowest Rated</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -41,7 +41,7 @@ function FilterControls({sortBy, setSortBy, setCurrentPage, reviewsPerPage, setR
             <SelectTrigger className="w-16">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-white border-[#E4E4E7]">
               <SelectItem value="5">5</SelectItem>
               <SelectItem value="10">10</SelectItem>
               <SelectItem value="15">15</SelectItem>

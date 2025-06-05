@@ -42,7 +42,7 @@ function ContactInfo() {
             <p className="text-gray-600">
               Phone: (555) 123-4567
               <br />
-              Email: info@bellavista.com
+              Email: info@hiispidlounge
               <br />
               Reservations: (555) 123-4568
             </p>
