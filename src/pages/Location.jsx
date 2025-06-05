@@ -9,7 +9,7 @@ import AppLayout from "../components/AppLayout";
 const locations = [
   {
     id: 1,
-    name: "Bella Vista Downtown",
+    name: "HiiSpid Lounge Downtown",
     address: "123 Culinary Street, Downtown District, New York, NY 10001",
     phone: "(555) 123-4567",
     hours: {
@@ -31,7 +31,7 @@ const locations = [
   },
   {
     id: 2,
-    name: "Bella Vista Uptown",
+    name: "HiiSpid Lounge Uptown",
     address: "456 Garden Avenue, Uptown District, New York, NY 10025",
     phone: "(555) 123-4568",
     hours: {
@@ -53,7 +53,7 @@ const locations = [
   },
   {
     id: 3,
-    name: "Bella Vista Waterfront",
+    name: "HiiSpid Lounge Waterfront",
     address: "789 Harbor View, Waterfront District, New York, NY 10004",
     phone: "(555) 123-4569",
     hours: {
@@ -108,7 +108,7 @@ function Location() {
     <AppLayout>
         <PageHeader
           title={"Our Locations"}
-          description={"Find a Bella Vista restaurant near you"}
+          description={"Find a HiiSpid Lounge restaurant near you"}
         />
         <div className="max-w-7xl mx-auto px-4 py-8">
           <div className="grid lg:grid-cols-2 gap-8">

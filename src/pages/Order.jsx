@@ -55,7 +55,7 @@ function Order() {
 
     // Handle order submission
     toast.success(
-      "Order submitted successfully! Thank you for choosing Bella Vista."
+      "Order submitted successfully! Thank you for choosing HiiSpid Lounge."
     );
   };
   return (
@@ -67,7 +67,6 @@ function Order() {
 
       <div className="max-w-4xl mx-auto px-4 py-8">
         <form onSubmit={handleSubmit} className="space-y-8">
-
           <OrderType orderType={orderType} setOrderType={setOrderType} />
 
           <CustomerInfoForm
