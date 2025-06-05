@@ -1,11 +1,12 @@
-import { Star, Badge, Minus, Plus } from "lucide-react";
-import { Card, CardContent } from "../components/Card";
 import { useState, useEffect } from "react";
+
+import { Minus, Plus } from "lucide-react";
 import { useSearchParams } from "react-router-dom";
+
+import { Card, CardContent } from "../components/Card";
 import { useCart, useMenus } from "../contexts/CartContext";
 import { Button } from "../components/Button";
-import Footer from "../components/Footer";
-import Navigation from "../components/Header";
+import AppLayout from "../components/AppLayout";
 
 function Menu() {
   const { menus } = useMenus();
@@ -54,7 +55,7 @@ function Menu() {
         (item) =>
           item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
           item.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          item.category.toLowerCase().includes(searchQuery.toLowerCase()),
+          item.category.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
 
@@ -78,9 +79,7 @@ function Menu() {
   };
 
   return (
-    <>
-      <Navigation />
-      <div className="min-h-screen bg-gray-50">
+    <AppLayout>
         {/* Header */}
         <div className="bg-white shadow-sm">
           <div className="max-w-7xl mx-auto px-4 py-8">
@@ -146,10 +145,10 @@ function Menu() {
                       <CardContent className="flex-1 p-4">
                         <div className="flex justify-between items-start mb-2">
                           <h3 className="text-lg font-semibold">{item.name}</h3>
-                          <div className="flex items-center gap-1">
+                          {/* <div className="flex items-center gap-1">
                             <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                             <span className="text-sm">{item.rating}</span>
-                          </div>
+                          </div> */}
                         </div>
                         <p className="text-gray-600 text-sm mb-3">
                           {item.description}
@@ -235,7 +234,7 @@ function Menu() {
                               size="sm"
                               onClick={() =>
                                 handleAddToCart(
-                                  menuItems.find((mi) => mi.id === item.id),
+                                  menuItems.find((mi) => mi.id === item.id)
                                 )
                               }
                               className="h-6 w-6 p-0 bg-amber-600 hover:bg-amber-700"
@@ -263,9 +262,7 @@ function Menu() {
             )}
           </div>
         </div>
-      </div>
-      <Footer />
-    </>
+    </AppLayout>
   );
 }
 

@@ -3,8 +3,8 @@ import { MapPin, Phone, Clock, Star, Navigation } from "lucide-react";
 import { Button } from "../components/Button";
 import { Card, CardContent, CardHeader, CardTitle } from "../components/Card";
 import { Badge } from "../components/Badge";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import PageHeader from "../components/PageHeader";
+import AppLayout from "../components/AppLayout";
 
 const locations = [
   {
@@ -105,20 +105,11 @@ function Location() {
   };
 
   return (
-    <>
-      <Header />
-      <div className="min-h-screen bg-gray-50">
-        <div className="bg-white shadow-sm">
-          <div className="max-w-7xl mx-auto px-4 py-8">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              Our Locations
-            </h1>
-            <p className="text-lg text-gray-600">
-              Find a Bella Vista restaurant near you
-            </p>
-          </div>
-        </div>
-
+    <AppLayout>
+        <PageHeader
+          title={"Our Locations"}
+          description={"Find a Bella Vista restaurant near you"}
+        />
         <div className="max-w-7xl mx-auto px-4 py-8">
           <div className="grid lg:grid-cols-2 gap-8">
             <div className="space-y-6">
@@ -245,7 +236,7 @@ function Location() {
                   <CardContent>
                     {(() => {
                       const location = locations.find(
-                        (l) => l.id === selectedLocation,
+                        (l) => l.id === selectedLocation
                       );
                       if (!location) return null;
 
@@ -273,7 +264,7 @@ function Location() {
                                     </span>
                                     <span>{hours}</span>
                                   </div>
-                                ),
+                                )
                               )}
                             </div>
                           </div>
@@ -329,9 +320,7 @@ function Location() {
             </div>
           </div>
         </div>
-      </div>
-      <Footer />
-    </>
+    </AppLayout>
   );
 }
 
