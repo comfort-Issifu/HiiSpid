@@ -15,6 +15,7 @@ function Router() {
         <Route path="/" element={<Home />} />
         <Route path="menu" element={<Menu />} />
         <Route path="order" element={<Order />} />
+        <Route path="/locations/:id" element={<Location />} />
         <Route path="locations" element={<Location />} />
         <Route path="feedback" element={<Feedback />} />
         <Route path="privacy" element={<Privacy />} />
