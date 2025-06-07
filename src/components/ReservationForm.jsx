@@ -16,9 +16,8 @@ function ReservationForm({ locations }) {
     location: "",
   });
 
-
   const location = locations.find((location) => location.id === Number(id));
- 
+
   const handleInputChange = (field, value) => {
     setFormData((prev) => ({
       ...prev,
@@ -91,7 +90,7 @@ function ReservationForm({ locations }) {
           onChange={(e) => handleInputChange("phone", e.target.value)}
           //   onBlur={() => reservationForm.handleBlur("phone")}
           //   className={reservationForm.errors.phone ? "border-red-500" : ""}
-          placeholder="(555) 123-4567"
+          placeholder="(+233) 504-9336"
           required
         />
         {/* {reservationForm.errors.phone && (

@@ -61,7 +61,7 @@ function Order() {
   return (
     <AppLayout>
       <PageHeader
-        title={"Order Online"}
+        title={""}
         description={" Place your order for pickup or delivery"}
       />
 

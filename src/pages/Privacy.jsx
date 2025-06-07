@@ -65,7 +65,7 @@ function Privacy() {
               </h2>
               <p className="text-gray-700">
                 If you have any questions about this Privacy Policy, please
-                contact us at privacy@hiispidlounge or (555) 123-4567.
+                contact us at privacy@hiispidlounge or (+233) 504-9336.
               </p>
             </section>
           </div>

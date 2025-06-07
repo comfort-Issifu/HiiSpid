@@ -21,7 +21,7 @@ function CustomerInfoForm({formData, onHandleInputChange}) {
                 value={formData.firstName}
                 onChange={(e) => onHandleInputChange("firstName", e.target.value)}
                 required
-                className="border-zinc-200"
+             
               />
             </div>
             <div>
@@ -31,7 +31,7 @@ function CustomerInfoForm({formData, onHandleInputChange}) {
                 value={formData.lastName}
                 onChange={(e) => onHandleInputChange("lastName", e.target.value)}
                 required
-                className="border-zinc-200"
+             
               />
             </div>
           </div>
@@ -44,7 +44,7 @@ function CustomerInfoForm({formData, onHandleInputChange}) {
                 value={formData.email}
                 onChange={(e) => onHandleInputChange("email", e.target.value)}
                 required
-                className="border-zinc-200"
+             
               />
             </div>
             <div>
@@ -55,7 +55,7 @@ function CustomerInfoForm({formData, onHandleInputChange}) {
                 value={formData.phone}
                 onChange={(e) => onHandleInputChange("phone", e.target.value)}
                 required
-                className="border-zinc-200"
+             
               />
             </div>
           </div>

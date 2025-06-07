@@ -40,7 +40,7 @@ function ContactInfo() {
             <Phone className="h-12 w-12 text-amber-600 mx-auto mb-4" />
             <h3 className="text-xl font-semibold mb-2">Contact</h3>
             <p className="text-gray-600">
-              Phone: (555) 123-4567
+              Phone: (+233) 504-9336
               <br />
               Email: info@hiispidlounge
               <br />

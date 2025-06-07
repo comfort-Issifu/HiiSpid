@@ -25,16 +25,16 @@ function DeliveryAddressInfo({ formData,  orderType,onHandleInputChange }) {
         </div>
         <div className="grid md:grid-cols-2 gap-4">
           <div>
-            <Label htmlFor="city">City *</Label>
+            <Label htmlFor="location">Location *</Label>
             <Input
-              id="city"
-              value={formData.city}
-              onChange={(e) => onHandleInputChange("city", e.target.value)}
+              id="location"
+              value={formData.location}
+              onChange={(e) => onHandleInputChange("location", e.target.value)}
               required={orderType === "delivery"}
               className="border-zinc-200"
             />
           </div>
-          <div>
+          {/* <div>
             <Label htmlFor="zipCode">ZIP Code *</Label>
             <Input
               id="zipCode"
@@ -43,7 +43,7 @@ function DeliveryAddressInfo({ formData,  orderType,onHandleInputChange }) {
               className="border-zinc-200"
               required={orderType === "delivery"}
             />
-          </div>
+          </div> */}
         </div>
       </CardContent>
     </Card>

@@ -69,7 +69,7 @@ function Terms() {
               </h2>
               <p className="text-gray-700">
                 For questions about these Terms of Service, contact us at
-                legal@hiispidlounge or (555) 123-4567.
+                legal@hiispidlounge or (+233) 504-9336.
               </p>
             </section>
           </div>

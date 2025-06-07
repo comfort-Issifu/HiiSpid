@@ -12,16 +12,13 @@ function CustomerNeedHelp() {
         <div className="space-y-3">
           <div className="flex items-center gap-2">
             <Phone className="h-4 w-4 text-amber-600" />
-            <span>General Inquiries: (555) 123-4567</span>
+            <span>General Inquiries: (+233) 504-9336</span>
           </div>
           <div className="flex items-center gap-2">
             <Phone className="h-4 w-4 text-amber-600" />
             <span>Reservations: (555) 123-4568</span>
           </div>
-          <Button
-            variant="outline"
-            className="w-full"
-          >
+          <Button variant="outline" className="w-full">
             Contact Customer Service
           </Button>
         </div>

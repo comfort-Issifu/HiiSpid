@@ -39,7 +39,7 @@ export default function Header() {
         (item) =>
           item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
           item.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          item.category.toLowerCase().includes(searchQuery.toLowerCase()),
+          item.category.toLowerCase().includes(searchQuery.toLowerCase())
       );
       setSearchResults(filtered);
     } else {
@@ -190,7 +190,7 @@ export default function Header() {
             </div>
             <div className="flex items-center text-sm text-gray-600">
               <Phone className="h-4 w-4 mr-1" />
-              (555) 123-4567
+              (+233) 504-9336
             </div>
           </div>
 

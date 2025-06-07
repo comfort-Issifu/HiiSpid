@@ -42,13 +42,13 @@ function LocationCard({
         <div className="flex-1 p-6">
           <div className="flex justify-between items-start mb-2">
             <h3 className="text-xl font-semibold">{location.name}</h3>
-            <div className="flex items-center gap-1">
+            {/* <div className="flex items-center gap-1">
               <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
               <span className="text-sm font-medium">{location.rating}</span>
               <span className="text-sm text-gray-500">
                 ({location.reviews})
               </span>
-            </div>
+            </div> */}
           </div>
 
           <div className="flex items-start gap-2 mb-2">

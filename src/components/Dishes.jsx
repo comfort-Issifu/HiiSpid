@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import { useCart, useMenus } from "../contexts/CartContext";
 import Spinner from "./Spinner";
 
-export const Dishes = () => {
+const Dishes = () => {
   const { menus, isLoading } = useMenus();
   const { addToCart } = useCart();
   const featuredDishes = menus.slice(0, 3);
@@ -77,3 +77,5 @@ export const Dishes = () => {
     </section>
   );
 };
+
+export default Dishes;
