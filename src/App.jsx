@@ -3,12 +3,15 @@ import Router from "./Route/Router";
 // import CookieBanner from "./components/CookieBanner";
 import { CartProvider } from "./contexts/CartContext";
 import { FeedbackProvider } from "./contexts/feedback/Feedback.context";
+import { LocationProvider } from "./contexts/location/Location.context";
 
 function App() {
   return (
     <>
       <CartProvider>
         <FeedbackProvider>
+          <LocationProvider>
+
           <Router />
           <Toaster
             position="top-right"
@@ -30,6 +33,7 @@ function App() {
               },
             }}
           />
+          </LocationProvider>
         </FeedbackProvider>
       </CartProvider>
       {/* <CookieBanner /> */}

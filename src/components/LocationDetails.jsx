@@ -8,7 +8,7 @@ function LocationDetails({
   selectedLocation,
   getCurrentDay,
   onHandleMakeReservation,
-//   location,
+  //   location,
 }) {
   return (
     <Card>
@@ -28,34 +28,39 @@ function LocationDetails({
 
           return (
             <div className="space-y-4">
-              <div>
-                <h4 className="font-semibold mb-2">Hours of Operation</h4>
-                <div className="space-y-1">
-                  {Object.entries(location.hours).map(([day, hours]) => (
-                    <div key={day} className="flex justify-between text-sm">
-                      <span
-                        className={
-                          day === getCurrentDay() ? "font-semibold" : ""
-                        }
-                      >
-                        {day}
-                      </span>
-                      <span>{hours}</span>
-                    </div>
-                  ))}
+              {location.hour && Object.keys(location.hours).length > 0 ? (
+                <div>
+                  <h4 className="font-semibold mb-2">Hours of Operation</h4>
+                  <div className="space-y-1">
+                    {Object.entries(location.hours).map(([day, hours]) => (
+                      <div key={day} className="flex justify-between text-sm">
+                        <span
+                          className={
+                            day === getCurrentDay() ? "font-semibold" : ""
+                          }
+                        >
+                          {day}
+                        </span>
+                        <span>{hours}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-
-              <div>
-                <h4 className="font-semibold mb-2">Features & Amenities</h4>
-                <div className="flex flex-wrap gap-2">
-                  {location.features.map((feature) => (
-                    <Badge key={feature} variant="secondary">
-                      {feature}
-                    </Badge>
-                  ))}
+              ) : (
+                <p className="text-sm text-gray-500">No hours available.</p>
+              )}
+              {location.features && location.features.length > 0 && (
+                <div>
+                  <h4 className="font-semibold mb-2">Features & Amenities</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {location.features.map((feature) => (
+                      <Badge key={feature} variant="secondary">
+                        {feature}
+                      </Badge>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
 
               <div className="flex gap-2">
                 <Button

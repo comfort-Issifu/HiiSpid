@@ -12,7 +12,7 @@ function LocationCard({
 }) {
   const navigate = useNavigate();
   // const { id } = useParams();
-  
+
   const isOpenNow = (hours) => {
     const currentDay = getCurrentDay();
     const todayHours = hours[currentDay];
@@ -77,12 +77,14 @@ function LocationCard({
           <p className="text-gray-600 text-sm mb-3">{location.description}</p>
 
           <div className="flex flex-wrap gap-1">
-            {location.features.slice(0, 3).map((feature) => (
-              <Badge key={feature} variant="outline" className="text-xs">
-                {feature}
-              </Badge>
-            ))}
-            {location.features.length > 3 && (
+            {location.features && location.features.length > 0
+              ? location.features.slice(0, 3).map((feature) => (
+                  <Badge key={feature} variant="outline" className="text-xs">
+                    {feature}
+                  </Badge>
+                ))
+              : null}
+            {location.features && location.features.length > 3 && (
               <Badge variant="outline" className="text-xs">
                 +{location.features.length - 3} more
               </Badge>
