@@ -39,66 +39,67 @@ function Location() {
 
   return (
     <>
-      
-        <Modal
-          isOpen={isReservationModalOpen}
-          onClose={() => {
-            setIsReservationModalOpen(false);
-            // reservationForm.resetForm();
-          }}
-          title="Make a Reservation"
-          size="md"
-        >
-          <ReservationForm locations={locations} />
-        </Modal>
+      <Modal
+        isOpen={isReservationModalOpen}
+        onClose={() => {
+          setIsReservationModalOpen(false);
+          // reservationForm.resetForm();
+        }}
+        title="Make a Reservation"
+        size="md"
+      >
+        <ReservationForm
+          locations={locations}
+          onCloseModal={setIsReservationModalOpen}
+        />
+      </Modal>
 
-        <AppLayout>
-          <PageHeader
-            title={"Our Locations"}
-            description={"Find a HiiSpid Lounge restaurant near you"}
-          />
+      <AppLayout>
+        <PageHeader
+          title={"Our Locations"}
+          description={"Find a HiiSpid Lounge restaurant near you"}
+        />
 
-          <div className="max-w-7xl mx-auto px-4 py-8">
-            <div className="grid lg:grid-cols-2 gap-8">
-              <div className="space-y-6">
-                {isLoading ? (
-                  <Spinner />
-                ) : (
-                  locations.map((location, key) => (
-                    <LocationCard
-                      key={key}
-                      location={location}
-                      getCurrentDay={getCurrentDay}
-                      setSelectedLocation={setSelectedLocation}
-                      selectedLocation={selectedLocation}
-                    />
-                  ))
-                )}
-              </div>
-
-              <div className="space-y-6">
-                <Map />
-
-                {selectedLocation && (
-                  <LocationDetails
-                    locations={locations}
-                    selectedLocation={selectedLocation}
+        <div className="max-w-7xl mx-auto px-4 py-8">
+          <div className="grid lg:grid-cols-2 gap-8">
+            <div className="space-y-6">
+              {isLoading ? (
+                <Spinner />
+              ) : (
+                locations.map((location, key) => (
+                  <LocationCard
+                    key={key}
+                    location={location}
                     getCurrentDay={getCurrentDay}
-                    onHandleMakeReservation={() =>
-                      handleMakeReservation(location)
-                    }
+                    setSelectedLocation={setSelectedLocation}
+                    selectedLocation={selectedLocation}
                   />
-                )}
+                ))
+              )}
+            </div>
 
-                <CustomerNeedHelp
-                  onHandleMakeReservation={handleMakeReservation}
-                  location={location}
+            <div className="space-y-6">
+              <Map />
+
+              {selectedLocation && (
+                <LocationDetails
+                  locations={locations}
+                  selectedLocation={selectedLocation}
+                  getCurrentDay={getCurrentDay}
+                  onHandleMakeReservation={() =>
+                    handleMakeReservation(location)
+                  }
                 />
-              </div>
+              )}
+
+              <CustomerNeedHelp
+                onHandleMakeReservation={handleMakeReservation}
+                location={location}
+              />
             </div>
           </div>
-        </AppLayout>
-      
+        </div>
+      </AppLayout>
     </>
   );
 }

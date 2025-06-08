@@ -64,7 +64,7 @@ function LocationDetails({
 
               <div className="flex gap-2">
                 <Button
-                  className="flex-1 bg-amber-600 hover:bg-amber-700"
+                  className="flex-1 bg-amber-600 hover:bg-amber-700 text-white"
                   onClick={() => onHandleMakeReservation(location)}
                 >
                   Make Reservation

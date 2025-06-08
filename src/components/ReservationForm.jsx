@@ -4,7 +4,7 @@ import { Input } from "./Input";
 import { Button } from "./Button";
 import { useParams } from "react-router-dom";
 
-function ReservationForm({ locations }) {
+function ReservationForm({ locations, onCloseModal }) {
   const { id } = useParams();
   const [formData, setFormData] = useState({
     name: "",
@@ -139,14 +139,14 @@ function ReservationForm({ locations }) {
       </div>
 
       <div>
-        <Label htmlFor="guests">Number of Guests *</Label>$
+        <Label htmlFor="guests">Number of Guests *</Label>
         {/* {reservationForm.errors.guests ? "border-red-500" : ""} */}
         <select
           id="guests"
           value={formData.guests}
           onChange={(e) => handleInputChange("guests", e.target.value)}
           //   onBlur={() => reservationForm.handleBlur("guests")}
-          className={`flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2
+          className={`flex h-10 w-full items-center justify-between rounded-md border border-zinc-200 bg-white px-3 py-2 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1
              `}
           required
         >
@@ -168,13 +168,16 @@ function ReservationForm({ locations }) {
           type="button"
           variant="outline"
           onClick={() => {
-            // setIsReservationModalOpen(false);
+            onCloseModal(false);
             // reservationForm.resetForm();
           }}
         >
           Cancel
         </Button>
-        <Button type="submit" className="bg-amber-600 hover:bg-amber-700">
+        <Button
+          type="submit"
+          className="bg-amber-600 hover:bg-amber-700 text-white"
+        >
           Submit Reservation
         </Button>
       </div>
