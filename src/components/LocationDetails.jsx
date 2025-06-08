@@ -28,7 +28,7 @@ function LocationDetails({
 
           return (
             <div className="space-y-4">
-              {location.hour && Object.keys(location.hours).length > 0 ? (
+              {location.hours && Object.keys(location.hours).length > 0 ? (
                 <div>
                   <h4 className="font-semibold mb-2">Hours of Operation</h4>
                   <div className="space-y-1">
