@@ -136,7 +136,7 @@ export default function Header() {
                                     {item.name}
                                   </div>
                                   <div className="text-gray-500 text-xs">
-                                    ${item.price.toFixed(2)} each
+                                    GH¢{item.price.toFixed(2)} each
                                   </div>
                                 </div>
                                 <div className="flex items-center gap-2">
@@ -166,7 +166,7 @@ export default function Header() {
                             <div className="flex justify-between items-center mb-4">
                               <span className="font-semibold">Total:</span>
                               <span className="font-bold text-lg text-amber-600">
-                                ${getTotalPrice().toFixed(2)}
+                                GH¢{getTotalPrice().toFixed(2)}
                               </span>
                             </div>
                             <Button
@@ -234,7 +234,7 @@ export default function Header() {
                   >
                     <div className="font-medium">{item.name}</div>
                     <div className="text-sm text-gray-500">
-                      {item.category} • ${item.price}
+                      {item.category} • GH¢{item.price}
                     </div>
                   </button>
                 ))}
