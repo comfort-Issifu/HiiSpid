@@ -71,9 +71,9 @@ function Footer() {
               <div className="flex items-center">
                 <MapPin className="h-4 w-4 mr-2 text-amber-400" />
                 <span className="text-gray-300 text-sm">
-                  123 Culinary Street
+                  24 A-line Avenue Street
                   <br />
-                  New York, NY 10001
+                  Accra
                 </span>
               </div>
               <div className="flex items-center">
