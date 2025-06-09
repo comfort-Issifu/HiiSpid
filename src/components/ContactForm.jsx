@@ -11,7 +11,7 @@ import {
   SelectValue,
   SelectContent,
   SelectItem,
-} from "./select";
+} from "./Select";
 import { addReservation } from "../services/apiReservation";
 import toast from "react-hot-toast";
 import { useState } from "react";
