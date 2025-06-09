@@ -19,17 +19,15 @@ const menuItems = [
   // ... (same menuItems list you provided)
 ];
 
-<Navigation />;
-
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-
   const { cart, addToCart, removeFromCart, getTotalItems, getTotalPrice } =
     useCart();
+
   const location = useLocation();
   const navigate = useNavigate();
   const pathname = location.pathname;
@@ -192,7 +190,7 @@ export default function Header() {
             </div>
             <div className="flex items-center text-sm text-gray-600">
               <Phone className="h-4 w-4 mr-1" />
-              (555) 123-4567
+              (+233) 504-9336
             </div>
           </div>
 

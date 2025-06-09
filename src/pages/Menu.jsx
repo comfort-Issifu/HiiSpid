@@ -1,19 +1,25 @@
-import { Star, Badge, Minus, Plus } from "lucide-react";
-import { Card, CardContent } from "../components/Card";
 import { useState, useEffect } from "react";
-import { menuItems, menuCategories } from "../data";
+
+import { Minus, Plus } from "lucide-react";
 import { useSearchParams } from "react-router-dom";
-import { useCart } from "../contexts/CartContext";
+
+import { Card, CardContent } from "../components/Card";
+import { useCart, useMenus } from "../contexts/CartContext";
 import { Button } from "../components/Button";
-import Footer from "../components/Footer";
-import Navigation from "../components/Header";
+import AppLayout from "../components/AppLayout";
 
 function Menu() {
+  const { menus } = useMenus();
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [highlightedItem, setHighlightedItem] = useState(null);
   const [searchParams] = useSearchParams();
   const { cart, addToCart, removeFromCart, getTotalItems, getTotalPrice } =
     useCart();
+  const menuItems = menus;
+  const menuCategories = [
+    "All",
+    ...new Set(menus.map((menu) => menu.category)),
+  ];
 
   // Handle search and highlight from URL params
   useEffect(() => {
@@ -73,9 +79,7 @@ function Menu() {
   };
 
   return (
-    <>
-      <Navigation />
-      <div className="min-h-screen bg-gray-50">
+    <AppLayout>
         {/* Header */}
         <div className="bg-white shadow-sm">
           <div className="max-w-7xl mx-auto px-4 py-8">
@@ -108,7 +112,7 @@ function Menu() {
                       onClick={() => setSelectedCategory(category)}
                       className={
                         selectedCategory === category
-                          ? "bg-amber-600 hover:bg-amber-700"
+                          ? "bg-amber-600 hover:bg-amber-700 "
                           : ""
                       }
                     >
@@ -141,10 +145,10 @@ function Menu() {
                       <CardContent className="flex-1 p-4">
                         <div className="flex justify-between items-start mb-2">
                           <h3 className="text-lg font-semibold">{item.name}</h3>
-                          <div className="flex items-center gap-1">
+                          {/* <div className="flex items-center gap-1">
                             <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                             <span className="text-sm">{item.rating}</span>
-                          </div>
+                          </div> */}
                         </div>
                         <p className="text-gray-600 text-sm mb-3">
                           {item.description}
@@ -161,7 +165,7 @@ function Menu() {
                                   variant="outline"
                                   onClick={() => removeFromCart(item.id)}
                                 >
-                                  <Minus className="h-4 w-4" bg-white />
+                                  <Minus className="h-4 w-4 bg-white" />
                                 </Button>
                                 <span className="w-8 text-center">
                                   {getCartItemQuantity(item.id)}
@@ -258,9 +262,7 @@ function Menu() {
             )}
           </div>
         </div>
-      </div>
-      <Footer />
-    </>
+    </AppLayout>
   );
 }
 

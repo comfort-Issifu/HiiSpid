@@ -1,4 +1,5 @@
 import { MapPin, Phone, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -77,12 +78,12 @@ function Footer() {
               </div>
               <div className="flex items-center">
                 <Phone className="h-4 w-4 mr-2 text-amber-400" />
-                <span className="text-gray-300 text-sm">(555) 123-4567</span>
+                <span className="text-gray-300 text-sm">(+233) 504-9336</span>
               </div>
               <div className="flex items-center">
                 <Mail className="h-4 w-4 mr-2 text-amber-400" />
                 <span className="text-gray-300 text-sm">
-                  info@bellavista.com
+                  info@hiispidlounge
                 </span>
               </div>
             </div>
@@ -115,18 +116,18 @@ function Footer() {
               © 2024 HiiSpid Lounge Restaurant. All rights reserved.
             </div>
             <div className="flex space-x-6 text-sm">
-              <a
-                href="/privacy"
+              <Link
+                to="/privacy"
                 className="text-gray-400 hover:text-amber-400 transition-colors"
               >
                 Privacy Policy
-              </a>
-              <a
-                href="/terms"
+              </Link>
+              <Link
+                to="/terms"
                 className="text-gray-400 hover:text-amber-400 transition-colors"
               >
                 Terms of Service
-              </a>
+              </Link>
               <a
                 href="/accessibility"
                 className="text-gray-400 hover:text-amber-400 transition-colors"

@@ -143,8 +143,8 @@ export default function ImageCaptcha({ onVerify, isRequired = true }) {
                   isVerified
                     ? "border-green-500 bg-green-50"
                     : error
-                    ? "border-red-500 bg-red-50"
-                    : ""
+                      ? "border-red-500 bg-red-50"
+                      : ""
                 }`}
                 required={isRequired}
               />
