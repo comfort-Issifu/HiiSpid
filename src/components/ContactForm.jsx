@@ -1,7 +1,7 @@
 import { joiResolver } from "@hookform/resolvers/joi";
 import { useForm, Controller } from "react-hook-form";
 
-import {contactFormSchema} from "../schema/validation";
+import { contactFormSchema } from "../schema/validation";
 import { Label } from "./Label";
 import { Input } from "./Input";
 import { Button } from "./Button";
@@ -12,8 +12,13 @@ import {
   SelectContent,
   SelectItem,
 } from "./select";
+import { addReservation } from "../services/apiReservation";
+import toast from "react-hot-toast";
+import { useState } from "react";
+import Spinner from "./Spinner";
 
 function ContactForm({ setIsContactModalOpen }) {
+  const [isLoading, setIsLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -32,10 +37,20 @@ function ContactForm({ setIsContactModalOpen }) {
     },
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log("Form submitted:", data);
-    reset();
-    setIsContactModalOpen(false);
+
+    try {
+      setIsLoading(true);
+      await addReservation(data);
+
+      reset();
+      setIsContactModalOpen(false);
+    } catch (error) {
+      toast.error(error.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -185,6 +200,7 @@ function ContactForm({ setIsContactModalOpen }) {
             Cancel
           </Button>
           <Button type="submit" className="bg-amber-600 hover:bg-amber-700">
+            {isLoading && <Spinner color="white" size="xsmall" />}
             Send Message
           </Button>
         </div>

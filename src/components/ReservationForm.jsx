@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
@@ -8,9 +8,13 @@ import { reservationSchema } from "../schema/validation";
 import { Label } from "./Label";
 import { Input } from "./Input";
 import { Button } from "./Button";
+import { addReservation } from "../services/apiReservation";
+import toast from "react-hot-toast";
+import Spinner from "./Spinner";
 
 function ReservationForm({ locations, onCloseModal }) {
   const { id } = useParams();
+  const [isLoading, setIsLoading] = useState(false);
   const location = locations.find((loc) => loc.id === Number(id));
 
   const {
@@ -38,10 +42,21 @@ function ReservationForm({ locations, onCloseModal }) {
     }
   }, [location, setValue]);
 
-  const onSubmit = (data) => {
-    console.log("Submitting Reservation:", data);
-    reset();
-    onCloseModal(false);
+  const onSubmit = async (data) => {
+    try {
+      setIsLoading(true);
+      console.log(data)
+      const response = await addReservation(data);
+      toast.success(response.message);
+      console.log("Reservation submitted:", response.reservation);
+
+      reset();
+      onCloseModal(false);
+    } catch (error) {
+      toast.error(error.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -138,7 +153,9 @@ function ReservationForm({ locations, onCloseModal }) {
         <Button
           type="submit"
           className="bg-amber-600 hover:bg-amber-700 text-white"
+          disabled={isLoading}
         >
+          {isLoading && <Spinner color="white" size="xsmall" />}
           Submit Reservation
         </Button>
       </div>

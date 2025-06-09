@@ -33,7 +33,7 @@ function About() {
           </div>
           <div className="relative flex-1 aspect-square">
             <img
-              src="/assets/images/arseny-togulev-lNip798LiIs-unsplash.jpg"
+              src="https://wticuqmsgtfwtcpsrrld.supabase.co/storage/v1/object/sign/others/arseny-togulev-lNip798LiIs-unsplash.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV81YTliY2ZhZi1jODE5LTRiYzItOGMyYy02YjJhZGI0MWJlMmEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJvdGhlcnMvYXJzZW55LXRvZ3VsZXYtbE5pcDc5OExpSXMtdW5zcGxhc2guanBnIiwiaWF0IjoxNzQ5NDczMDQ1LCJleHAiOjE3NTIwNjUwNDV9.gJjVw0gFgphj_3oIZum6zupcDECanlM8CVq20COb_w4"
               height={500}
               width={200}
               alt="Chef in kitchen"

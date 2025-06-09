@@ -114,7 +114,7 @@ function FeedbackFrom() {
               />
             </div>
 
-            <div>
+            {/* <div>
               <Label htmlFor="location">Location Visited</Label>
               <RadioGroup
                 value={formData.location}
@@ -133,7 +133,7 @@ function FeedbackFrom() {
                   <Label htmlFor="waterfront">Waterfront</Label>
                 </div>
               </RadioGroup>
-            </div>
+            </div> */}
 
             <div>
               <Label htmlFor="visitDate">Visit Date</Label>
