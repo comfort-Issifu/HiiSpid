@@ -6,7 +6,7 @@ export default function Spinner({ size = "medium", color = "red" }) {
   };
 
   const colorClasses = {
-    red: "border-red-600",
+    red: "border-primary",
     white: "border-white",
   };
 

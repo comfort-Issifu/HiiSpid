@@ -1,103 +1,86 @@
-import { useState } from "react";
+import { useEffect } from "react";
+
+import { useForm } from "react-hook-form";
+import { useParams } from "react-router-dom";
+import { joiResolver } from "@hookform/resolvers/joi";
+
+import { reservationSchema } from "../schema/validation";
 import { Label } from "./Label";
 import { Input } from "./Input";
 import { Button } from "./Button";
-import { useParams } from "react-router-dom";
 
 function ReservationForm({ locations, onCloseModal }) {
   const { id } = useParams();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    date: "",
-    time: "",
-    guests: "2",
-    location: "",
+  const location = locations.find((loc) => loc.id === Number(id));
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+    setValue,
+  } = useForm({
+    resolver: joiResolver(reservationSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      date: "",
+      time: "",
+      guests: 2,
+      location: location?.name || "",
+    },
   });
 
-  const location = locations.find((location) => location.id === Number(id));
+  useEffect(() => {
+    if (location?.name) {
+      setValue("location", location.name);
+    }
+  }, [location, setValue]);
 
-  const handleInputChange = (field, value) => {
-    setFormData((prev) => ({
-      ...prev,
-      [field]: value,
-    }));
-  };
-
-  const handleReservationSubmit = (e) => {
-    e.preventDefault();
-    console.log("Submitting Reservation:", {
-      ...formData,
-      location: location.name,
-    });
-    // Add actual submission logic here
+  const onSubmit = (data) => {
+    console.log("Submitting Reservation:", data);
+    reset();
+    onCloseModal(false);
   };
 
   return (
-    <form onSubmit={handleReservationSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div>
-        <Label htmlFor="location">Location</Label>
+        <Label htmlFor="location">Location *</Label>
         <Input
           id="location"
-          value={location.name}
           disabled
+          {...register("location")}
           className="bg-gray-50"
         />
+        {errors.location && (
+          <p className="text-red-500 text-sm mt-1">{errors.location.message}</p>
+        )}
       </div>
 
       <div>
         <Label htmlFor="name">Full Name *</Label>
-        <Input
-          id="name"
-          value={formData.name}
-          onChange={(e) => handleInputChange("name", e.target.value)}
-          //   onBlur={() => reservationForm.handleBlur("name")}
-          //   className={reservationForm.errors.name ? "border-red-500" : ""}
-          required
-        />
-        {/* {reservationForm.errors.name && (
-          <p className="text-red-500 text-sm mt-1">
-            {reservationForm.errors.name}
-          </p>
-        )} */}
+        <Input id="name" {...register("name")} />
+        {errors.name && (
+          <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
+        )}
       </div>
 
       <div>
         <Label htmlFor="email">Email *</Label>
-        <Input
-          id="email"
-          type="email"
-          value={formData.email}
-          onChange={(e) => handleInputChange("email", e.target.value)}
-          //   onBlur={() => reservationForm.handleBlur("email")}
-          //   className={reservationForm.errors.email ? "border-red-500" : ""}
-          required
-        />
-        {/* {reservationForm.errors.email && (
-          <p className="text-red-500 text-sm mt-1">
-            {reservationForm.errors.email}
-          </p>
-        )} */}
+        <Input id="email" type="email" {...register("email")} />
+        {errors.email && (
+          <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+        )}
       </div>
 
       <div>
         <Label htmlFor="phone">Phone Number *</Label>
-        <Input
-          id="phone"
-          type="tel"
-          value={formData.phone}
-          onChange={(e) => handleInputChange("phone", e.target.value)}
-          //   onBlur={() => reservationForm.handleBlur("phone")}
-          //   className={reservationForm.errors.phone ? "border-red-500" : ""}
-          placeholder="(+233) 504-9336"
-          required
-        />
-        {/* {reservationForm.errors.phone && (
-          <p className="text-red-500 text-sm mt-1">
-            {reservationForm.errors.phone}
-          </p>
-        )} */}
+        <Input id="phone" type="tel" {...register("phone")} />
+        {errors.phone && (
+          <p className="text-red-500 text-sm mt-1">{errors.phone.message}</p>
+        )}
       </div>
 
       <div className="grid grid-cols-2 gap-4">
@@ -106,49 +89,29 @@ function ReservationForm({ locations, onCloseModal }) {
           <Input
             id="date"
             type="date"
-            value={formData.date}
-            onChange={(e) => handleInputChange("date", e.target.value)}
-            // onBlur={() => reservationForm.handleBlur("date")}
-            // className={reservationForm.errors.date ? "border-red-500" : ""}
+            {...register("date")}
             min={new Date().toISOString().split("T")[0]}
-            required
           />
-          {/* {reservationForm.errors.date && (
-            <p className="text-red-500 text-sm mt-1">
-              {reservationForm.errors.date}
-            </p>
-          )} */}
+          {errors.date && (
+            <p className="text-red-500 text-sm mt-1">{errors.date.message}</p>
+          )}
         </div>
+
         <div>
           <Label htmlFor="time">Time *</Label>
-          <Input
-            id="time"
-            type="time"
-            value={formData.time}
-            onChange={(e) => handleInputChange("time", e.target.value)}
-            // onBlur={() => reservationForm.handleBlur("time")}
-            // className={reservationForm.errors.time ? "border-red-500" : ""}
-            required
-          />
-          {/* {reservationForm.errors.time && (
-            <p className="text-red-500 text-sm mt-1">
-              {reservationForm.errors.time}
-            </p>
-          )} */}
+          <Input id="time" type="time" {...register("time")} />
+          {errors.time && (
+            <p className="text-red-500 text-sm mt-1">{errors.time.message}</p>
+          )}
         </div>
       </div>
 
       <div>
         <Label htmlFor="guests">Number of Guests *</Label>
-        {/* {reservationForm.errors.guests ? "border-red-500" : ""} */}
         <select
           id="guests"
-          value={formData.guests}
-          onChange={(e) => handleInputChange("guests", e.target.value)}
-          //   onBlur={() => reservationForm.handleBlur("guests")}
-          className={`flex h-10 w-full items-center justify-between rounded-md border border-zinc-200 bg-white px-3 py-2 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1
-             `}
-          required
+          {...register("guests")}
+          className="flex h-10 w-full items-center justify-between rounded-md border border-zinc-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-2"
         >
           {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
             <option key={num} value={num}>
@@ -156,11 +119,9 @@ function ReservationForm({ locations, onCloseModal }) {
             </option>
           ))}
         </select>
-        {/* {reservationForm.errors.guests && (
-          <p className="text-red-500 text-sm mt-1">
-            {reservationForm.errors.guests}
-          </p>
-        )} */}
+        {errors.guests && (
+          <p className="text-red-500 text-sm mt-1">{errors.guests.message}</p>
+        )}
       </div>
 
       <div className="flex justify-end gap-3 pt-4">
@@ -168,8 +129,8 @@ function ReservationForm({ locations, onCloseModal }) {
           type="button"
           variant="outline"
           onClick={() => {
+            reset();
             onCloseModal(false);
-            // reservationForm.resetForm();
           }}
         >
           Cancel

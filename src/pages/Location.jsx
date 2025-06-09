@@ -1,4 +1,6 @@
 import { useState } from "react";
+
+import { useLocation } from "../contexts/location/Location.context";
 import PageHeader from "../components/PageHeader";
 import AppLayout from "../components/AppLayout";
 import LocationCard from "../components/LocationCard";
@@ -7,16 +9,14 @@ import LocationDetails from "../components/LocationDetails";
 import CustomerNeedHelp from "../components/CustomerNeedHelp";
 import ReservationForm from "../components/ReservationForm";
 import Modal from "../components/Modal";
-import {
-  LocationProvider,
-  useLocation,
-} from "../contexts/location/Location.context";
 import Spinner from "../components/Spinner";
-
+import ContactForm from "../components/ContactForm";
 
 function Location() {
   const { locations, isLoading } = useLocation();
   const [isReservationModalOpen, setIsReservationModalOpen] = useState(false);
+
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState(null);
 
   const getCurrentDay = () => {
@@ -33,8 +33,10 @@ function Location() {
   };
 
   const handleMakeReservation = () => {
-    // setSelectedLocation(location);
     setIsReservationModalOpen(true);
+  };
+  const handleCustomerNeedHelp = () => {
+    setIsContactModalOpen(true);
   };
 
   return (
@@ -52,6 +54,17 @@ function Location() {
           locations={locations}
           onCloseModal={setIsReservationModalOpen}
         />
+      </Modal>
+
+      <Modal
+        isOpen={isContactModalOpen}
+        onClose={() => {
+          setIsContactModalOpen(false);
+        }}
+        title="Need Immediate Assistance?"
+        size="md"
+      >
+        <ContactForm setIsContactModalOpen={setIsContactModalOpen} />
       </Modal>
 
       <AppLayout>
@@ -93,7 +106,7 @@ function Location() {
               )}
 
               <CustomerNeedHelp
-                onHandleMakeReservation={handleMakeReservation}
+                onOpenModal={handleCustomerNeedHelp}
                 location={location}
               />
             </div>

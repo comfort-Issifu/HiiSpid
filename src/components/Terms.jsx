@@ -25,7 +25,7 @@ function Terms({ isCaptchaVerified, orderType }) {
             type="submit"
             className={`w-full text-lg py-6 ${
               isCaptchaVerified
-                ? "bg-amber-600 hover:bg-amber-700"
+                ? "bg-amber-600 hover:bg-amber-700 text-white"
                 : "bg-gray-400 cursor-not-allowed"
             }`}
             disabled={!isCaptchaVerified}

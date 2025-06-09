@@ -1,7 +1,8 @@
 import { Navigation } from "lucide-react";
-import { Button } from "./Button";
+
 import { Card, CardContent, CardHeader, CardTitle } from "./Card";
 import { Badge } from "../components/Badge";
+import { Button } from "./Button";
 
 function LocationDetails({
   locations,
@@ -15,7 +16,10 @@ function LocationDetails({
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           {locations.find((l) => l.id === selectedLocation)?.name}
-          <Button size="sm" className="bg-amber-600 hover:bg-amber-700">
+          <Button
+            size="sm"
+            className="bg-amber-600 hover:bg-amber-700 text-white"
+          >
             <Navigation className="h-4 w-4 mr-2" />
             Get Directions
           </Button>

@@ -1,8 +1,9 @@
 import { Phone } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "./Card";
-import { Button } from "./Button";
 
-function CustomerNeedHelp() {
+import { Button } from "./Button";
+import { Card, CardContent, CardHeader, CardTitle } from "./Card";
+
+function CustomerNeedHelp({onOpenModal}) {
   return (
     <Card>
       <CardHeader>
@@ -18,7 +19,11 @@ function CustomerNeedHelp() {
             <Phone className="h-4 w-4 text-amber-600" />
             <span>Reservations: (555) 123-4568</span>
           </div>
-          <Button variant="outline" className="w-full">
+          <Button
+            variant="outline"
+            className="w-full"
+            onClick={() => onOpenModal()}
+          >
             Contact Customer Service
           </Button>
         </div>
