@@ -22,44 +22,44 @@ function Footer() {
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <a
-                  href="/menu"
+                <Link
+                  to="/menu"
                   className="text-gray-300 hover:text-amber-400 transition-colors"
                 >
                   Menu
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/order"
+                <Link
+                  to="/order"
                   className="text-gray-300 hover:text-amber-400 transition-colors"
                 >
                   Order Online
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/locations"
+                <Link
+                  to="/locations"
                   className="text-gray-300 hover:text-amber-400 transition-colors"
                 >
                   Locations
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/feedback"
+                <Link
+                  to="/feedback"
                   className="text-gray-300 hover:text-amber-400 transition-colors"
                 >
                   Reviews
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/locations"
                   className="text-gray-300 hover:text-amber-400 transition-colors"
                 >
                   Reservations
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -128,12 +128,12 @@ function Footer() {
               >
                 Terms of Service
               </Link>
-              <a
-                href="/accessibility"
+              <Link
+                to="/accessibility"
                 className="text-gray-400 hover:text-amber-400 transition-colors"
               >
                 Accessibility
-              </a>
+              </Link>
             </div>
           </div>
         </div>

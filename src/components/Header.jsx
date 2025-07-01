@@ -156,7 +156,7 @@ export default function Header() {
                                     onClick={() => addToCart(item)}
                                     className="h-6 w-6 p-0 bg-amber-600 hover:bg-amber-700"
                                   >
-                                    <Plus className="h-3 w-3" />
+                                    <Plus className="h-3 w-3 text-white"  />
                                   </Button>
                                 </div>
                               </div>
@@ -171,7 +171,7 @@ export default function Header() {
                             </div>
                             <Button
                               asChild
-                              className="w-full bg-amber-600 hover:bg-amber-700"
+                              className="w-full bg-amber-600 hover:bg-amber-700 text-white"
                             >
                               <NavLink
                                 to="/order"

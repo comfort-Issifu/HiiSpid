@@ -23,7 +23,7 @@ function Hero() {
             size="lg"
             className="bg-amber-600 hover:bg-amber-700 text-white"
           >
-            <NavLink href="/menu">View Menu</NavLink>
+            <NavLink to="/menu">View Menu</NavLink>
           </Button>
           <Button
             asChild
@@ -31,7 +31,7 @@ function Hero() {
             variant="outline"
             className="border-white text-white hover:bg-white hover:text-amber-900"
           >
-            <NavLink href="/order">Order Online</NavLink>
+            <NavLink to="/order">Order Online</NavLink>
           </Button>
         </div>
       </div>

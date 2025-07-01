@@ -1,4 +1,3 @@
-
 import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react";
 import { Button } from "../components/Button";
 
@@ -70,7 +69,7 @@ export default function Pagination({
           size="sm"
           onClick={() => onPageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className="flex items-center gap-1"
+          className="flex items-center gap-1 bg-white"
         >
           <ChevronLeft className="h-4 w-4" />
           Previous
@@ -109,7 +108,7 @@ export default function Pagination({
           size="sm"
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className="flex items-center gap-1"
+          className="flex items-center gap-1 bg-white"
         >
           Next
           <ChevronRight className="h-4 w-4" />

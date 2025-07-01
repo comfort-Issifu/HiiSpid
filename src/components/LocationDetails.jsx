@@ -3,6 +3,7 @@ import { Navigation } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "./Card";
 import { Badge } from "../components/Badge";
 import { Button } from "./Button";
+import { Link } from "react-router-dom";
 
 function LocationDetails({
   locations,
@@ -73,9 +74,11 @@ function LocationDetails({
                 >
                   Make Reservation
                 </Button>
-                <Button variant="outline" className="flex-1">
-                  Order Online
-                </Button>
+                <Link to="/order" className="flex-1">
+                  <Button variant="outline" className="w-full">
+                    Order Online
+                  </Button>
+                </Link>
               </div>
             </div>
           );

@@ -50,7 +50,7 @@ const Dishes = () => {
                     </span>
                     <Button
                       size="sm"
-                      className="bg-amber-600 hover:bg-amber-700"
+                      className="bg-amber-600 hover:bg-amber-700 text-white"
                       onClick={() =>
                         addToCart({
                           id: dish.id,
@@ -70,7 +70,7 @@ const Dishes = () => {
         </div>
         <div className="text-center mt-12">
           <Button asChild size="lg" variant="outline">
-            <NavLink href="/menu">View Full Menu</NavLink>
+            <NavLink to="/menu">View Full Menu</NavLink>
           </Button>
         </div>
       </div>
